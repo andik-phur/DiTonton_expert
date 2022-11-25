@@ -1,0 +1,26 @@
+library core;
+
+export 'styles/colors.dart';
+export 'styles/text_styles.dart';
+export 'utils/constants.dart';
+export 'utils/exception.dart';
+export 'utils/failure.dart';
+export 'utils/state_enum.dart';
+export 'utils/utils.dart';
+export 'presentation/widgets/scrolable_sheet.dart';
+export 'domain/entities/genre.dart';
+export 'data/models/genre_model.dart';
+export 'presentation/widgets/tab_pager.dart';
+export 'domain/usecases/get_detail_tv.dart';
+export 'domain/usecases/get_now_playing_tv.dart';
+export 'domain/usecases/get_popular_tv.dart';
+export 'domain/usecases/get_recomendations_tv.dart';
+export 'domain/usecases/get_top_rate_tv.dart';
+export 'domain/usecases/get_tv_watcha_list.dart';
+export 'domain/usecases/get_watch_list_status_tv.dart';
+export 'domain/usecases/remove_tv_watch_list.dart';
+export 'domain/usecases/save_tv_watch_list.dart';
+export 'data/datasources/db/tv_db/tv_database_helper.dart';
+export 'data/datasources/tv_datasource/tv_local_data_source..dart';
+export 'data/datasources/tv_datasource/tv_remote_data_source.dart';
+export 'data/repositories/tv_repositories_impl.dart';
