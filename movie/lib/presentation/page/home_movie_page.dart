@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                 currentAccountPicture: CircleAvatar(
                   backgroundImage: AssetImage('assets/circle-g.png'),
                 ),
-                accountName: Text('Nonton Kuy'),
+                accountName: Text('DiTonton'),
                 accountEmail: Text('')),
             ListTile(
               leading: const Icon(Icons.movie_outlined),

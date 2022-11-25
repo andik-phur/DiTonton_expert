@@ -47,7 +47,7 @@ class _TvPageState extends State<TvPage> {
                 currentAccountPicture: CircleAvatar(
                   backgroundImage: AssetImage('assets/circle-g.png'),
                 ),
-                accountName: Text('Nonton Kuy'),
+                accountName: Text('DiToton'),
                 accountEmail: Text('')),
             ListTile(
               leading: const Icon(Icons.movie_outlined),
