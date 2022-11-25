@@ -1,13 +1,13 @@
 // ignore_for_file: constant_identifier_names
 
 import 'dart:convert';
-import 'package:core/core.dart';
+import 'package:core/utils/exception.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
+import 'package:movie/data/datasource/movie_remote_data_source.dart';
 import 'package:movie/data/model/movie_detail_model.dart';
 import 'package:movie/data/model/movie_response.dart';
-import 'package:movie/movie.dart';
 import '../../json_reader.dart';
 import '../../helper/test_helper.mocks.dart';
 

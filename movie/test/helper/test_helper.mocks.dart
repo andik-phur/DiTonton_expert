@@ -7,7 +7,7 @@ import 'dart:async' as _i7;
 import 'dart:convert' as _i27;
 import 'dart:typed_data' as _i28;
 
-import 'package:core/core.dart' as _i8;
+import 'package:core/utils/failure.dart' as _i8;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:http/io_client.dart' as _i5;
 import 'package:http/src/base_request.dart' as _i26;

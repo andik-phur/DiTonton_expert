@@ -1,14 +1,18 @@
-// ignore_for_file: library_private_types_in_public_api, must_be_immutable
+// ignore_for_file: library_private_types_in_public_api, must_be_immutable, depend_on_referenced_packages
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-// ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:movie/presentation/bloc/movie_detail/movie_detail_bloc.dart';
+import 'package:movie/presentation/bloc/recommendation_movies/recommendation_movies_bloc.dart';
+import 'package:movie/presentation/bloc/watchlist/watchlist_movie_bloc.dart';
 import '../../domain/entities/movie_detail.dart';
-import '../../movie.dart';
-// ignore: depend_on_referenced_packages
-import 'package:core/core.dart';
+import 'package:core/utils/constants.dart';
+import 'package:core/presentation/widgets/scrolable_sheet.dart';
+import 'package:core/styles/colors.dart';
+import 'package:core/styles/text_styles.dart';
+import 'package:core/domain/entities/genre.dart';
 
 class MovieDetailPage extends StatefulWidget {
   static const routeName = '/detail';

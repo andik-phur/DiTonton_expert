@@ -2,7 +2,7 @@
 
 import '../repositories/movie_repository.dart';
 import 'package:dartz/dartz.dart';
-import 'package:core/core.dart';
+import 'package:core/utils/failure.dart';
 import '../entities/movie.dart';
 
 class GetTopRatedMovies {

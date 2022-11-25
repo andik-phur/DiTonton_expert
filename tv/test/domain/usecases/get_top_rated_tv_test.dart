@@ -1,4 +1,4 @@
-import 'package:core/core.dart';
+import 'package:core/domain/usecases/get_top_rate_tv.dart';
 import 'package:core/domain/entities/tv.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';

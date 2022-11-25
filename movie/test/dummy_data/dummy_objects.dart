@@ -1,7 +1,7 @@
-import 'package:core/core.dart';
 import 'package:movie/data/model/movie_table.dart';
 import 'package:movie/domain/entities/movie.dart';
 import 'package:movie/domain/entities/movie_detail.dart';
+import 'package:core/domain/entities/genre.dart';
 
 final testMovie = Movie(
   adult: false,

@@ -2,7 +2,7 @@
 import 'package:equatable/equatable.dart';
 import '../../domain/entities/movie_detail.dart';
 // ignore: depend_on_referenced_packages
-import 'package:core/core.dart';
+import 'package:core/data/models/genre_model.dart';
 
 class MovieDetailResponse extends Equatable {
   const MovieDetailResponse({

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../domain/entities/movie.dart';
 import '../page/movie_detail_page.dart';
 // ignore: depend_on_referenced_packages
-import 'package:core/core.dart';
+import 'package:core/styles/text_styles.dart';
+// ignore: depend_on_referenced_packages
+import 'package:core/utils/constants.dart';
 
 class MovieCard extends StatelessWidget {
   final Movie movie;

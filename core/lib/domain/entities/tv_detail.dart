@@ -1,8 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:core/domain/entities/genre.dart';
 import 'package:equatable/equatable.dart';
-
-import '../../core.dart';
 
 // ignore: must_be_immutable
 class TvDetail extends Equatable {

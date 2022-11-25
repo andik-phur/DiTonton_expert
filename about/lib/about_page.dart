@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
-import 'package:core/core.dart';
+import 'package:core/styles/colors.dart';
 
 class AboutPage extends StatelessWidget {
   // ignore: constant_identifier_names

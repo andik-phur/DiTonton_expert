@@ -1,14 +1,15 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:io';
 
-// ignore: depend_on_referenced_packages
 import 'package:dartz/dartz.dart';
 import '../../domain/entities/movie.dart';
 import '../../domain/entities/movie_detail.dart';
 import '../../domain/repositories/movie_repository.dart';
 import '../datasource/movie_local_data_source.dart';
 import '../datasource/movie_remote_data_source.dart';
-// ignore: depend_on_referenced_packages
-import 'package:core/core.dart';
+import 'package:core/utils/exception.dart';
+import 'package:core/utils/failure.dart';
 
 import '../model/movie_table.dart';
 

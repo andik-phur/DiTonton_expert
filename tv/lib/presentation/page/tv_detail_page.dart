@@ -1,7 +1,12 @@
 // ignore_for_file: depend_on_referenced_packages, library_private_types_in_public_api, must_be_immutable
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:core/core.dart';
+import 'package:core/utils/constants.dart';
+import 'package:core/styles/text_styles.dart';
+import 'package:core/presentation/widgets/scrolable_sheet.dart';
+import 'package:core/styles/colors.dart';
+import 'package:core/domain/entities/genre.dart';
+
 import 'package:core/domain/entities/tv_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

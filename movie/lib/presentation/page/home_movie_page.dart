@@ -10,10 +10,12 @@ import '../bloc/now_playing/now_playing_movies_bloc.dart';
 import '../bloc/popular_movies/popular_movies_bloc.dart';
 import '../bloc/top_rated/top_rated_movies_bloc.dart';
 import 'movie_detail_page.dart';
-import 'package:core/core.dart';
+import 'package:core/styles/text_styles.dart';
 import 'package:search/search.dart';
 import 'package:tv/presentation/page/tv_home_page.dart';
 import 'package:about/about_page.dart';
+import 'package:core/presentation/widgets/tab_pager.dart';
+import 'package:core/utils/constants.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = '/movie_home';

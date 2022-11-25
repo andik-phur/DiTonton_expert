@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/widget/movie_card_list.dart';
-import 'package:core/core.dart';
+import 'package:core/utils/utils.dart';
 
 import '../bloc/watchlist/watchlist_movie_bloc.dart';
 

@@ -1,7 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:core/core.dart';
+import 'package:core/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class ScrollableSheet extends StatefulWidget {

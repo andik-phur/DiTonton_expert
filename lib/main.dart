@@ -1,4 +1,3 @@
-import 'package:about/about.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,11 +8,30 @@ import 'package:tv/presentation/bloc/tv_recommendation/tv_recommendation_bloc.da
 import 'package:tv/presentation/bloc/tv_top_rated/tv_top_rated_bloc.dart';
 import 'package:tv/presentation/bloc/tv_watchlist/tv_watchlist_bloc.dart';
 import 'injection.dart' as di;
-import 'package:core/core.dart';
+import 'package:core/styles/colors.dart';
+import 'package:core/styles/text_styles.dart';
+import 'package:core/utils/utils.dart';
 import 'package:search/search.dart';
-import 'package:movie/movie.dart';
-import 'package:tv/tv.dart';
+import 'package:tv/presentation/page/tv_detail_page.dart';
+import 'package:tv/presentation/page/tv_top_rated.dart';
+import 'package:tv/presentation/page/tv_popular_page.dart';
+import 'package:tv/presentation/page/watchlist_tv_page.dart';
+import 'package:tv/presentation/page/tv_home_page.dart';
 import 'package:search/presentation/bloc/movie_bloc_search/search_movie_bloc.dart';
+import 'package:tv/presentation/bloc/tv_now_playing/tv_now_playing_bloc.dart';
+import 'package:about/about_page.dart';
+import 'package:movie/presentation/bloc/movie_detail/movie_detail_bloc.dart';
+import 'package:movie/presentation/bloc/now_playing/now_playing_movies_bloc.dart';
+import 'package:movie/presentation/bloc/popular_movies/popular_movies_bloc.dart';
+import 'package:movie/presentation/bloc/recommendation_movies/recommendation_movies_bloc.dart';
+import 'package:movie/presentation/bloc/top_rated/top_rated_movies_bloc.dart';
+import 'package:movie/presentation/bloc/watchlist/watchlist_movie_bloc.dart';
+import 'package:movie/presentation/page/home_movie_page.dart';
+import 'package:movie/presentation/page/movie_detail_page.dart';
+import 'package:movie/presentation/page/popular_movies_page.dart';
+import 'package:movie/presentation/page/top_rated_movies_page.dart';
+import 'package:movie/presentation/page/watchlist_movies_page.dart';
+import 'package:core/presentation/widgets/tab_pager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

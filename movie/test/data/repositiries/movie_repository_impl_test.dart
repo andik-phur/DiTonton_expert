@@ -1,16 +1,18 @@
 // ignore_for_file: prefer_const_declarations
 
 import 'dart:io';
-import 'package:core/core.dart';
+import 'package:core/utils/exception.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movie/data/model/movie_detail_model.dart';
 import 'package:movie/data/model/movie_model.dart';
+import 'package:movie/data/repositories/movie_repository_impl.dart';
 import 'package:movie/domain/entities/movie.dart';
-import 'package:movie/movie.dart';
 import '../../dummy_data/dummy_objects.dart';
 import '../../helper/test_helper.mocks.dart';
+import 'package:core/utils/failure.dart';
+import 'package:core/data/models/genre_model.dart';
 
 void main() {
   late MovieRepositoryImpl repository;

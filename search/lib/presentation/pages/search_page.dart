@@ -1,6 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages, library_private_types_in_public_api
 
-import 'package:core/core.dart';
+import 'package:core/styles/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/widget/movie_card_list.dart';

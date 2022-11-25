@@ -2,7 +2,7 @@ import 'package:core/data/models/tv_model/tv_model.dart';
 import 'package:core/data/models/tv_model/tv_respone.dart';
 import 'package:core/data/models/tv_model/tv_table.dart';
 import 'package:core/domain/entities/tv.dart';
-import 'package:core/core.dart';
+import 'package:core/domain/entities/genre.dart';
 import 'package:core/domain/entities/tv_detail.dart';
 
 final testTv = Television(

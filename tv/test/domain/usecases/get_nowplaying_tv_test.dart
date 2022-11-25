@@ -1,9 +1,9 @@
-import 'package:core/core.dart';
 import 'package:core/domain/entities/tv.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import '../../helpers/test_helper.mocks.dart';
+import 'package:core/domain/usecases/get_now_playing_tv.dart';
 
 void main() {
   late GetNowPlayingTv usecase;

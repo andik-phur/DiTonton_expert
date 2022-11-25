@@ -1,7 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'dart:convert';
-import 'package:core/core.dart';
+import 'package:core/utils/exception.dart';
 import '../model/movie_detail_model.dart';
 import '../model/movie_model.dart';
 import '../model/movie_response.dart';

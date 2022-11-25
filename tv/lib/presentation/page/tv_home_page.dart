@@ -1,20 +1,21 @@
 // ignore_for_file: depend_on_referenced_packages, library_private_types_in_public_api
 
-import 'package:about/about.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:core/domain/entities/tv.dart';
-import 'package:core/core.dart';
+import 'package:core/presentation/widgets/tab_pager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie/movie.dart';
 import 'package:tv/presentation/bloc/tv_now_playing/tv_now_playing_bloc.dart';
 import 'package:tv/presentation/bloc/tv_popular/tv_popular_bloc.dart';
 import 'package:tv/presentation/bloc/tv_top_rated/tv_top_rated_bloc.dart';
 import 'package:tv/presentation/page/tv_detail_page.dart';
 import 'package:tv/presentation/page/tv_top_rated.dart';
 import 'package:tv/presentation/page/tv_popular_page.dart';
-import 'package:search/search.dart';
+import 'package:search/presentation/pages/tv_search_page.dart';
 import 'package:about/about_page.dart';
+import 'package:movie/presentation/page/home_movie_page.dart';
+import 'package:core/styles/text_styles.dart';
+import 'package:core/utils/constants.dart';
 
 class TvPage extends StatefulWidget {
   static const routeName = '/tv_home';

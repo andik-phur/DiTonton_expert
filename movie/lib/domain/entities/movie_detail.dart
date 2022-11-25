@@ -1,7 +1,7 @@
 // ignore: depend_on_referenced_packages
 import 'package:equatable/equatable.dart';
 // ignore: depend_on_referenced_packages
-import 'package:core/core.dart';
+import 'package:core/domain/entities/genre.dart';
 
 class MovieDetail extends Equatable {
   const MovieDetail({

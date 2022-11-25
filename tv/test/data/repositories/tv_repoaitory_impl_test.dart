@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_declarations
 
-import 'package:core/core.dart';
+import 'package:core/data/repositories/tv_repositories_impl.dart';
 import 'package:core/data/models/tv_model/tv_detail_model.dart';
 import 'package:core/data/models/tv_model/tv_model.dart';
 import 'package:core/domain/entities/tv.dart';
@@ -9,6 +9,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import '../../dummy_data/dummy_object.dart';
 import '../../helpers/test_helper.mocks.dart';
+import 'package:core/utils/failure.dart';
+import 'package:core/utils/exception.dart';
+import 'package:core/data/models/genre_model.dart';
 
 void main() {
   late TvRepositoryImpl repository;
