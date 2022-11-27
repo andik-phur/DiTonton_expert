@@ -16,7 +16,7 @@ void main() {
 
   final tv = <Television>[];
   const tQuery = "Spiderman";
-  test('should get list of movies from the repository', () async {
+  test('should get list of movie from the repository', () async {
     ///arrange
     when(mockTvRepository.Tvsearch(tQuery)).thenAnswer((_) async => Right(tv));
 
