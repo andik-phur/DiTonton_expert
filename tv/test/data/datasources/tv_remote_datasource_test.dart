@@ -23,7 +23,7 @@ void main() {
     mockHttpClient = MockHttpClient();
     dataSource = TvRemoteDataSourceImpl(client: mockHttpClient);
   });
-  group('Get Now Playing Tv Series', () {
+  group('Get Now Playing Tv', () {
     final tvList = ResponseTv.fromJson(
             json.decode(readJson('tv_test/dummy_data/now_playing_tv.json')))
         .tvList;
