@@ -5,66 +5,66 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movie/presentation/bloc/top_rated/top_rated_movies_bloc.dart';
 
-import '../../dummy_data/dummy_objects.dart';
+import '../../movie_test/dummy_data/dummy_objects.dart';
 import '../../helper/test_helper.mocks.dart';
 
 void main() {
   late MockGetTopRatedMovies mockGetTopRatedMovies;
-  late MovieTopRatedBloc movieTopRatedBloc;
+  late MoviesTopRatedBloc movieTopRatedBloc;
 
   setUp(() {
     mockGetTopRatedMovies = MockGetTopRatedMovies();
-    movieTopRatedBloc = MovieTopRatedBloc(mockGetTopRatedMovies);
+    movieTopRatedBloc = MoviesTopRatedBloc(mockGetTopRatedMovies);
   });
 
   test('the initial state should be empty', () {
-    expect(movieTopRatedBloc.state, MovieTopRatedEmpty());
+    expect(movieTopRatedBloc.state, MoviesTopRatedEmpty());
   });
 
-  blocTest<MovieTopRatedBloc, MovieTopRatedState>(
+  blocTest<MoviesTopRatedBloc, MoviesTopRatedState>(
     'should emit Loading state and then HasData state when data successfully fetched',
     build: () {
       when(mockGetTopRatedMovies.execute())
           .thenAnswer((_) async => Right(testMovieList));
       return movieTopRatedBloc;
     },
-    act: (bloc) => bloc.add(OnMovieTopRated()),
+    act: (bloc) => bloc.add(OnMoviesTopRated()),
     expect: () => [
-      MovieTopRatedLoading(),
-      MovieTopRatedHasData(testMovieList),
+      MoviesTopRatedLoading(),
+      MoviesTopRatedHasData(testMovieList),
     ],
     verify: (bloc) {
       verify(mockGetTopRatedMovies.execute());
-      return OnMovieTopRated().props;
+      return OnMoviesTopRated().props;
     },
   );
 
-  blocTest<MovieTopRatedBloc, MovieTopRatedState>(
+  blocTest<MoviesTopRatedBloc, MoviesTopRatedState>(
     'should emit Loading state and then Error state when data failed to fetch',
     build: () {
       when(mockGetTopRatedMovies.execute())
           .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return movieTopRatedBloc;
     },
-    act: (bloc) => bloc.add(OnMovieTopRated()),
+    act: (bloc) => bloc.add(OnMoviesTopRated()),
     expect: () => [
-      MovieTopRatedLoading(),
-      MovieTopRatedError('Server Failure'),
+      MoviesTopRatedLoading(),
+      MoviesTopRatedError('Server Failure'),
     ],
-    verify: (bloc) => MovieTopRatedLoading(),
+    verify: (bloc) => MoviesTopRatedLoading(),
   );
 
-  blocTest<MovieTopRatedBloc, MovieTopRatedState>(
+  blocTest<MoviesTopRatedBloc, MoviesTopRatedState>(
     'should emit Loading state and then Empty state when the retrieved data is empty',
     build: () {
       when(mockGetTopRatedMovies.execute())
           .thenAnswer((_) async => const Right([]));
       return movieTopRatedBloc;
     },
-    act: (bloc) => bloc.add(OnMovieTopRated()),
+    act: (bloc) => bloc.add(OnMoviesTopRated()),
     expect: () => [
-      MovieTopRatedLoading(),
-      MovieTopRatedEmpty(),
+      MoviesTopRatedLoading(),
+      MoviesTopRatedEmpty(),
     ],
   );
 }

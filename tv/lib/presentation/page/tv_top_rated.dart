@@ -19,8 +19,8 @@ class _TvTopRatedPageState extends State<TvTopRatedPage> {
   void initState() {
     super.initState();
     Future.microtask(() =>
-        BlocProvider.of<TvTopRatedBloc>(context, listen: false)
-            .add(OnTvTopRated()));
+        BlocProvider.of<TelevisionTopRatedBloc>(context, listen: false)
+            .add(OnTelevisionTopRated()));
   }
 
   @override
@@ -31,14 +31,14 @@ class _TvTopRatedPageState extends State<TvTopRatedPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8),
-        child: BlocBuilder<TvTopRatedBloc, TvTopRatedState>(
+        child: BlocBuilder<TelevisionTopRatedBloc, TelevisionTopRatedState>(
           key: const Key('top_rated_movies'),
           builder: (context, state) {
-            if (state is TvTopRatedLoading) {
+            if (state is TelevisionTopRatedLoading) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (state is TvTopRatedHasData) {
+            } else if (state is TelevisionTopRatedHasData) {
               // ignore: non_constant_identifier_names
               final Tvs = state.result;
               return ListView.builder(
@@ -52,7 +52,7 @@ class _TvTopRatedPageState extends State<TvTopRatedPage> {
             } else {
               return Center(
                 key: const Key('error_message'),
-                child: Text((state as TvTopRatedError).message),
+                child: Text((state as TelevisionTopRatedError).message),
               );
             }
           },

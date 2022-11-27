@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_declarations
 
-import 'package:core/data/models/genre_model.dart';
+import 'package:core/core.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:core/domain/entities/genre.dart';
 

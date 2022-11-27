@@ -1,34 +1,34 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'dart:async';
-
-import 'package:core/domain/entities/tv.dart';
-import 'package:core/domain/usecases/get_popular_tv.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tv/domain/entities/tv.dart';
+import 'package:tv/domain/usecases/get_popular_tv.dart';
 
 part 'tv_popular_event.dart';
 
 part 'tv_popular_state.dart';
 
-class TvPopularBloc extends Bloc<TvPopularEvent, TvPopularState> {
+class TelevisionPopularBloc
+    extends Bloc<TelevisionPopularEvent, TelevisionPopularState> {
   final GetPopularTv _getTvPopular;
 
-  TvPopularBloc(this._getTvPopular) : super(TvPopularEmpty()) {
-    on<OnTvPopular>(_onTvPopular);
+  TelevisionPopularBloc(this._getTvPopular) : super(TelevisionPopularEmpty()) {
+    on<OnTelevisionPopular>(_onTvPopular);
   }
 
   FutureOr<void> _onTvPopular(
-      OnTvPopular event, Emitter<TvPopularState> emit) async {
-    emit(TvPopularLoading());
+      OnTelevisionPopular event, Emitter<TelevisionPopularState> emit) async {
+    emit(TelevisionPopularLoading());
     final result = await _getTvPopular.execute();
 
     result.fold((failure) {
-      emit(TvPopularError(failure.message));
+      emit(TelevisionPopularError(failure.message));
     }, (success) {
       success.isEmpty
-          ? emit(TvPopularEmpty())
-          : emit(TvPopularHasData(success));
+          ? emit(TelevisionPopularEmpty())
+          : emit(TelevisionPopularHasData(success));
     });
   }
 }

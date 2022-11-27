@@ -13,27 +13,27 @@ part 'recommendation_movies_state.dart';
 
 part 'recommendation_movies_event.dart';
 
-class MovieRecommendationBloc
-    extends Bloc<MovieRecommendationEvent, MovieRecommendationState> {
+class MoviesRecommendationBloc
+    extends Bloc<MoviesRecommendationEvent, MoviesRecommendationState> {
   final GetMovieRecommendations _getMovieRecommendations;
 
-  MovieRecommendationBloc(this._getMovieRecommendations)
-      : super(MovieRecommendationEmpty()) {
-    on<OnMovieRecommendation>(_onMovieRecommendation);
+  MoviesRecommendationBloc(this._getMovieRecommendations)
+      : super(MoviesRecommendationEmpty()) {
+    on<OnMoviesRecommendation>(_onMovieRecommendation);
   }
 
-  FutureOr<void> _onMovieRecommendation(OnMovieRecommendation event,
-      Emitter<MovieRecommendationState> emit) async {
+  FutureOr<void> _onMovieRecommendation(OnMoviesRecommendation event,
+      Emitter<MoviesRecommendationState> emit) async {
     final id = event.id;
-    emit(MovieRecommendationLoading());
+    emit(MoviesRecommendationLoading());
 
     final result = await _getMovieRecommendations.execute(id);
     result.fold((failure) {
-      emit(MovieRecommendationError(failure.message));
+      emit(MoviesRecommendationError(failure.message));
     }, (success) {
       success.isEmpty
-          ? emit(MovieRecommendationEmpty())
-          : emit(MovieRecommendationHasData(success));
+          ? emit(MoviesRecommendationEmpty())
+          : emit(MoviesRecommendationHasData(success));
     });
   }
 }

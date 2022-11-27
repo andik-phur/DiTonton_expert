@@ -18,8 +18,8 @@ class _PopularMoviesPageState extends State<PopularMoviesPage> {
   @override
   void initState() {
     Future.microtask(() =>
-        BlocProvider.of<MoviePopularBloc>(context, listen: false)
-            .add(OnMoviePopular()));
+        BlocProvider.of<MoviesPopularBloc>(context, listen: false)
+            .add(OnMoviesPopular()));
 
     super.initState();
   }
@@ -32,11 +32,11 @@ class _PopularMoviesPageState extends State<PopularMoviesPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8),
-        child: BlocBuilder<MoviePopularBloc, MoviePopularState>(
+        child: BlocBuilder<MoviesPopularBloc, MoviesPopularState>(
             builder: (context, state) {
-          if (state is MoviePopularLoading) {
+          if (state is MoviesPopularLoading) {
             return const CircularProgressIndicator();
-          } else if (state is MoviePopularHasData) {
+          } else if (state is MoviesPopularHasData) {
             final data = state.result;
             return ListView.builder(
                 itemCount: data.length,
@@ -47,7 +47,7 @@ class _PopularMoviesPageState extends State<PopularMoviesPage> {
           } else {
             return Center(
               key: const Key("error_message"),
-              child: Text((state as MoviePopularError).message),
+              child: Text((state as MoviesPopularError).message),
             );
           }
         }),

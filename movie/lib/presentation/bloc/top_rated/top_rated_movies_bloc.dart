@@ -10,25 +10,26 @@ import '../../../domain/usecases/get_top_rated_movies.dart';
 part 'top_rated_movies_event.dart';
 part 'top_rated_movies_state.dart';
 
-class MovieTopRatedBloc extends Bloc<MovieTopRatedEvent, MovieTopRatedState> {
+class MoviesTopRatedBloc
+    extends Bloc<MoviesTopRatedEvent, MoviesTopRatedState> {
   final GetTopRatedMovies _getTopRatedMovies;
 
-  MovieTopRatedBloc(this._getTopRatedMovies) : super(MovieTopRatedEmpty()) {
-    on<OnMovieTopRated>(_onMovieTopRated);
+  MoviesTopRatedBloc(this._getTopRatedMovies) : super(MoviesTopRatedEmpty()) {
+    on<OnMoviesTopRated>(_onMovieTopRated);
   }
 
   FutureOr<void> _onMovieTopRated(
-      OnMovieTopRated event, Emitter<MovieTopRatedState> emit) async {
-    emit(MovieTopRatedLoading());
+      OnMoviesTopRated event, Emitter<MoviesTopRatedState> emit) async {
+    emit(MoviesTopRatedLoading());
 
     final result = await _getTopRatedMovies.execute();
 
     result.fold((failure) {
-      emit(MovieTopRatedError(failure.message));
+      emit(MoviesTopRatedError(failure.message));
     }, (success) {
       success.isEmpty
-          ? emit(MovieTopRatedEmpty())
-          : emit(MovieTopRatedHasData(success));
+          ? emit(MoviesTopRatedEmpty())
+          : emit(MoviesTopRatedHasData(success));
     });
   }
 }

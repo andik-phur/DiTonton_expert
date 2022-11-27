@@ -19,8 +19,9 @@ class _WatchlistTvPageState extends State<WatchlistTvPage> with RouteAware {
   @override
   void initState() {
     super.initState();
-    Future.microtask(
-        () => context.read<TvWatchListBloc>().add(OnFetchTvWatchList()));
+    Future.microtask(() => context
+        .read<TelevisionWatchListBloc>()
+        .add(OnFetchTelevisionWatchList()));
   }
 
   @override
@@ -31,7 +32,7 @@ class _WatchlistTvPageState extends State<WatchlistTvPage> with RouteAware {
 
   @override
   void didPopNext() {
-    context.read<TvWatchListBloc>().add(OnFetchTvWatchList());
+    context.read<TelevisionWatchListBloc>().add(OnFetchTelevisionWatchList());
   }
 
   @override
@@ -44,13 +45,13 @@ class _WatchlistTvPageState extends State<WatchlistTvPage> with RouteAware {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8),
-      child: BlocBuilder<TvWatchListBloc, TvWatchListState>(
+      child: BlocBuilder<TelevisionWatchListBloc, TelevisionWatchListState>(
           builder: (context, state) {
-        if (state is TvWatchListLoading) {
+        if (state is TelevisionWatchListLoading) {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        } else if (state is TvWatchListHasData) {
+        } else if (state is TelevisionWatchListHasData) {
           final data = state.result;
           return ListView.builder(
             itemCount: data.length,
@@ -59,7 +60,7 @@ class _WatchlistTvPageState extends State<WatchlistTvPage> with RouteAware {
               return CardTvList(tv);
             },
           );
-        } else if (state is TvWatchListEmpty) {
+        } else if (state is TelevisionWatchListEmpty) {
           return const Center(
             child: Text("Watchlist Empty"),
           );

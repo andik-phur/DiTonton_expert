@@ -1,8 +1,8 @@
-import 'package:core/domain/usecases/get_detail_tv.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import '../../dummy_data/dummy_object.dart';
+import 'package:tv/domain/usecases/get_detail_tv.dart';
+import '../../tv_test/dummy_data/dummy_object.dart';
 import '../../helpers/test_helper.mocks.dart';
 
 void main() {

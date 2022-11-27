@@ -20,6 +20,8 @@ dependencies:
 dev_dependencies:
   core:
    path: ../core
+  tv:
+   path: ../tv
   movie:
    path: ../movie
   flutter_test:

@@ -1,8 +1,8 @@
-import 'package:core/domain/usecases/save_tv_watch_list.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import '../../dummy_data/dummy_object.dart';
+import 'package:tv/domain/usecases/save_tv_watch_list.dart';
+import '../../tv_test/dummy_data/dummy_object.dart';
 import '../../helpers/test_helper.mocks.dart';
 
 void main() {

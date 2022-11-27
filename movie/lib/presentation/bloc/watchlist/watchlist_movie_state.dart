@@ -1,53 +1,53 @@
 part of 'watchlist_movie_bloc.dart';
 
-abstract class MovieWatchListState extends Equatable {}
+abstract class MoviesWatchListState extends Equatable {}
 
-class MovieWatchListInitial extends MovieWatchListState {
+class MoviesWatchListInitial extends MoviesWatchListState {
   @override
   List<Object?> get props => [];
 }
 
-class MovieWatchListEmpty extends MovieWatchListState {
+class MoviesWatchListEmpty extends MoviesWatchListState {
   @override
   List<Object?> get props => [];
 }
 
-class MovieWatchListLoading extends MovieWatchListState {
+class MoviesWatchListLoading extends MoviesWatchListState {
   @override
   List<Object?> get props => [];
 }
 
-class MovieWatchListError extends MovieWatchListState {
+class MoviesWatchListError extends MoviesWatchListState {
   final String message;
 
-  MovieWatchListError(this.message);
+  MoviesWatchListError(this.message);
 
   @override
   List<Object?> get props => [message];
 }
 
-class MovieWatchListHasData extends MovieWatchListState {
+class MoviesWatchListHasData extends MoviesWatchListState {
   final List<Movie> result;
 
-  MovieWatchListHasData(this.result);
+  MoviesWatchListHasData(this.result);
 
   @override
   List<Object?> get props => [result];
 }
 
-class MovieWatchListIsAdded extends MovieWatchListState {
+class MoviesWatchListIsAdded extends MoviesWatchListState {
   final bool isAdded;
 
-  MovieWatchListIsAdded(this.isAdded);
+  MoviesWatchListIsAdded(this.isAdded);
 
   @override
   List<Object?> get props => [isAdded];
 }
 
-class MovieWatchListMessage extends MovieWatchListState {
+class MoviesWatchListMessage extends MoviesWatchListState {
   final String message;
 
-  MovieWatchListMessage(this.message);
+  MoviesWatchListMessage(this.message);
 
   @override
   List<Object?> get props => [message];

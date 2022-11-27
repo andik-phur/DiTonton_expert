@@ -1,6 +1,6 @@
-import 'package:core/data/models/tv_model/tv_model.dart';
-import 'package:core/domain/entities/tv.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:tv/data/model/tv_model/tv_model.dart';
+import 'package:tv/domain/entities/tv.dart';
 
 void main() {
   final tvModel = ModelTv(

@@ -46,46 +46,46 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         BlocProvider(
-          create: (_) => di.locator<MovieDetailBloc>(),
-        ),
-        BlocProvider(
-          create: (_) => di.locator<MovieRecommendationBloc>(),
+          create: (_) => di.locator<MoviesDetailBloc>(),
         ),
         BlocProvider(
           create: (_) => di.locator<TvRecommendationBloc>(),
         ),
         BlocProvider(
-          create: (_) => di.locator<TvDetailBloc>(),
+          create: (_) => di.locator<MoviesRecommendationBloc>(),
         ),
         BlocProvider(
-          create: (_) => di.locator<SearchBloc>(),
+          create: (_) => di.locator<DetailTvBloc>(),
         ),
         BlocProvider(
           create: (_) => di.locator<SearchBlocTv>(),
         ),
         BlocProvider(
-          create: (_) => di.locator<MovieTopRatedBloc>(),
+          create: (_) => di.locator<SearchBloc>(),
         ),
         BlocProvider(
-          create: (_) => di.locator<MoviePopularBloc>(),
+          create: (_) => di.locator<MoviesTopRatedBloc>(),
         ),
         BlocProvider(
-          create: (_) => di.locator<MovieNowPlayingBloc>(),
+          create: (_) => di.locator<MoviesNowPlayingBloc>(),
         ),
         BlocProvider(
-          create: (_) => di.locator<TvTopRatedBloc>(),
+          create: (_) => di.locator<MoviesPopularBloc>(),
         ),
         BlocProvider(
-          create: (_) => di.locator<MovieWatchListBloc>(),
+          create: (_) => di.locator<TelevisionTopRatedBloc>(),
         ),
         BlocProvider(
-          create: (_) => di.locator<TvWatchListBloc>(),
+          create: (_) => di.locator<TelevisionWatchListBloc>(),
         ),
         BlocProvider(
-          create: (_) => di.locator<TvOnTheAirBloc>(),
+          create: (_) => di.locator<MoviesWatchListBloc>(),
         ),
         BlocProvider(
-          create: (_) => di.locator<TvPopularBloc>(),
+          create: (_) => di.locator<TelevisionPopularBloc>(),
+        ),
+        BlocProvider(
+          create: (_) => di.locator<TelevisionOnTheAirBloc>(),
         ),
       ],
       child: MaterialApp(
@@ -100,39 +100,38 @@ class MyApp extends StatelessWidget {
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
-            case HomePage.routeName:
-              return MaterialPageRoute(builder: (_) => const HomePage());
             case MovieDetailPage.routeName:
               final id = settings.arguments as int;
               return MaterialPageRoute(
                   builder: (_) => MovieDetailPage(id: id), settings: settings);
+            case HomePage.routeName:
+              return MaterialPageRoute(builder: (_) => const HomePage());
             case TvDetailPage.routeName:
               final id = settings.arguments as int;
               return MaterialPageRoute(
                   builder: (_) => TvDetailPage(id: id), settings: settings);
-            case PopularMoviesPage.routeName:
-              return MaterialPageRoute(builder: (_) => PopularMoviesPage());
             case TopRatedMoviesPage.routeName:
               return MaterialPageRoute(builder: (_) => TopRatedMoviesPage());
-
+            case PopularMoviesPage.routeName:
+              return MaterialPageRoute(builder: (_) => PopularMoviesPage());
             case TvTopRatedPage.routeName:
               return MaterialPageRoute(builder: (_) => TvTopRatedPage());
-            case PopularTvPage.routeName:
-              return MaterialPageRoute(builder: (_) => PopularTvPage());
             case AboutPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => AboutPage());
+            case PopularTvPage.routeName:
+              return MaterialPageRoute(builder: (_) => PopularTvPage());
             case SearchPage.routeName:
               return MaterialPageRoute(builder: (_) => SearchPage());
-            case SearchTvPage.routeName:
-              return MaterialPageRoute(builder: (_) => SearchTvPage());
             case WatchlistPage.routeName:
               return MaterialPageRoute(builder: (_) => WatchlistPage());
+            case SearchTvPage.routeName:
+              return MaterialPageRoute(builder: (_) => SearchTvPage());
             case WatchlistTvPage.routeName:
               return MaterialPageRoute(builder: (_) => WatchlistTvPage());
-            case TabPager.routeName:
-              return MaterialPageRoute(builder: (_) => TabPager());
             case TvPage.routeName:
               return MaterialPageRoute(builder: (_) => TvPage());
+            case TabPager.routeName:
+              return MaterialPageRoute(builder: (_) => TabPager());
             default:
               return MaterialPageRoute(builder: (_) {
                 return const Scaffold(

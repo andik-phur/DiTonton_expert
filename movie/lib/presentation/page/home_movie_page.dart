@@ -33,9 +33,9 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     Future.microtask(() {
-      context.read<MovieNowPlayingBloc>().add(OnMovieNowPLayingCalled());
-      context.read<MovieTopRatedBloc>().add(OnMovieTopRated());
-      context.read<MoviePopularBloc>().add(OnMoviePopular());
+      context.read<MoviesNowPlayingBloc>().add(OnMoviesNowPLayingCalled());
+      context.read<MoviesTopRatedBloc>().add(OnMoviesTopRated());
+      context.read<MoviesPopularBloc>().add(OnMoviesPopular());
     });
   }
 
@@ -102,14 +102,14 @@ class _HomePageState extends State<HomePage> {
                 'Now Playing',
                 style: kHeading6,
               ),
-              BlocBuilder<MovieNowPlayingBloc, MovieNowPlayingState>(
+              BlocBuilder<MoviesNowPlayingBloc, MoviesNowPlayingState>(
                   builder: (context, state) {
-                if (state is MovieNowPlayingLoading) {
+                if (state is MoviesNowPlayingLoading) {
                   return const CircularProgressIndicator();
-                } else if (state is MovieNowPlayingHasData) {
+                } else if (state is MoviesNowPlayingHasData) {
                   final data = state.result;
                   return MovieList(data);
-                } else if (state is MovieNowPlayingError) {
+                } else if (state is MoviesNowPlayingError) {
                   return const Text("Failed");
                 } else {
                   return Container();
@@ -120,14 +120,14 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     Navigator.pushNamed(context, PopularMoviesPage.routeName);
                   }),
-              BlocBuilder<MoviePopularBloc, MoviePopularState>(
+              BlocBuilder<MoviesPopularBloc, MoviesPopularState>(
                   builder: (context, state) {
-                if (state is MoviePopularLoading) {
+                if (state is MoviesPopularLoading) {
                   return const CircularProgressIndicator();
-                } else if (state is MoviePopularHasData) {
+                } else if (state is MoviesPopularHasData) {
                   final data = state.result;
                   return MovieList(data);
-                } else if (state is MoviePopularError) {
+                } else if (state is MoviesPopularError) {
                   return const Text("Failed");
                 } else {
                   return Container();
@@ -138,14 +138,14 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     Navigator.pushNamed(context, TopRatedMoviesPage.routeName);
                   }),
-              BlocBuilder<MovieTopRatedBloc, MovieTopRatedState>(
+              BlocBuilder<MoviesTopRatedBloc, MoviesTopRatedState>(
                   builder: (context, state) {
-                if (state is MovieTopRatedLoading) {
+                if (state is MoviesTopRatedLoading) {
                   return const CircularProgressIndicator();
-                } else if (state is MovieTopRatedHasData) {
+                } else if (state is MoviesTopRatedHasData) {
                   final data = state.result;
                   return MovieList(data);
-                } else if (state is MovieTopRatedError) {
+                } else if (state is MoviesTopRatedError) {
                   return const Text("Failed");
                 } else {
                   return Container();

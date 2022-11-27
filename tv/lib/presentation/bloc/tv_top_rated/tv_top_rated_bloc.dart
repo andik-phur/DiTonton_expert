@@ -2,33 +2,35 @@
 
 import 'dart:async';
 
-import 'package:core/domain/entities/tv.dart';
-import 'package:core/domain/usecases/get_top_rate_tv.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tv/domain/entities/tv.dart';
+import 'package:tv/domain/usecases/get_top_rate_tv.dart';
 
 part 'tv_top_rated_event.dart';
 
 part 'tv_top_rated_state.dart';
 
-class TvTopRatedBloc extends Bloc<TvTopRatedEvent, TvTopRatedState> {
+class TelevisionTopRatedBloc
+    extends Bloc<TelevisionTopRatedEvent, TelevisionTopRatedState> {
   final GetTopRatedTv _getTvTopRated;
 
-  TvTopRatedBloc(this._getTvTopRated) : super(TvTopRatedEmpty()) {
-    on<OnTvTopRated>(_onTvTopRated);
+  TelevisionTopRatedBloc(this._getTvTopRated)
+      : super(TelevisionTopRatedEmpty()) {
+    on<OnTelevisionTopRated>(_onTvTopRated);
   }
 
   FutureOr<void> _onTvTopRated(
-      OnTvTopRated event, Emitter<TvTopRatedState> emit) async {
-    emit(TvTopRatedLoading());
+      OnTelevisionTopRated event, Emitter<TelevisionTopRatedState> emit) async {
+    emit(TelevisionTopRatedLoading());
     final result = await _getTvTopRated.execute();
 
     result.fold((failure) {
-      emit(TvTopRatedError(failure.message));
+      emit(TelevisionTopRatedError(failure.message));
     }, (success) {
       success.isEmpty
-          ? emit(TvTopRatedEmpty())
-          : emit(TvTopRatedHasData(success));
+          ? emit(TelevisionTopRatedEmpty())
+          : emit(TelevisionTopRatedHasData(success));
     });
   }
 }

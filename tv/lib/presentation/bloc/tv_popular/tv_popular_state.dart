@@ -1,30 +1,30 @@
 part of 'tv_popular_bloc.dart';
 
-abstract class TvPopularState extends Equatable {}
+abstract class TelevisionPopularState extends Equatable {}
 
-class TvPopularEmpty extends TvPopularState {
+class TelevisionPopularEmpty extends TelevisionPopularState {
   @override
   List<Object?> get props => [];
 }
 
-class TvPopularLoading extends TvPopularState {
+class TelevisionPopularLoading extends TelevisionPopularState {
   @override
   List<Object?> get props => [];
 }
 
-class TvPopularError extends TvPopularState {
+class TelevisionPopularError extends TelevisionPopularState {
   final String message;
 
-  TvPopularError(this.message);
+  TelevisionPopularError(this.message);
 
   @override
   List<Object?> get props => [message];
 }
 
-class TvPopularHasData extends TvPopularState {
+class TelevisionPopularHasData extends TelevisionPopularState {
   final List<Television> result;
 
-  TvPopularHasData(this.result);
+  TelevisionPopularHasData(this.result);
 
   @override
   List<Object?> get props => [result];

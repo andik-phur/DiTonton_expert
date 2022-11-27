@@ -1,6 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:core/domain/entities/tv.dart';
+import 'package:tv/domain/entities/tv.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:search/domain/usecase/search_tv.dart';

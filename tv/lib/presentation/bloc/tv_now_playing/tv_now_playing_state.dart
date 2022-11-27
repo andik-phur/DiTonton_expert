@@ -1,30 +1,30 @@
 part of 'tv_now_playing_bloc.dart';
 
-abstract class TvOnTheAirState extends Equatable {}
+abstract class TelevisionOnTheAirState extends Equatable {}
 
-class TvOnTheAirEmpty extends TvOnTheAirState {
+class TelevisionOnTheAirEmpty extends TelevisionOnTheAirState {
   @override
   List<Object?> get props => [];
 }
 
-class TvOnTheAirLoading extends TvOnTheAirState {
+class TelevisionOnTheAirLoading extends TelevisionOnTheAirState {
   @override
   List<Object?> get props => [];
 }
 
-class TvOnTheAirError extends TvOnTheAirState {
+class TelevisionOnTheAirError extends TelevisionOnTheAirState {
   final String message;
 
-  TvOnTheAirError(this.message);
+  TelevisionOnTheAirError(this.message);
 
   @override
   List<Object?> get props => [message];
 }
 
-class TvOnTheAirHasData extends TvOnTheAirState {
+class TelevisionOnTheAirHasData extends TelevisionOnTheAirState {
   final List<Television> result;
 
-  TvOnTheAirHasData(this.result);
+  TelevisionOnTheAirHasData(this.result);
 
   @override
   List<Object?> get props => [result];

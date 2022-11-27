@@ -1,8 +1,8 @@
 part of 'tv_now_playing_bloc.dart';
 
-abstract class TvOnTheAirEvent extends Equatable {}
+abstract class TelevisionOnTheAirEvent extends Equatable {}
 
-class OnTvOnTheAir extends TvOnTheAirEvent {
+class OnTelevisionOnTheAir extends TelevisionOnTheAirEvent {
   @override
   List<Object?> get props => [];
 }

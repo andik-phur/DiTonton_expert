@@ -18,7 +18,8 @@ class _PopularTvPageState extends State<PopularTvPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() => context.read<TvPopularBloc>().add(OnTvPopular()));
+    Future.microtask(
+        () => context.read<TelevisionPopularBloc>().add(OnTelevisionPopular()));
   }
 
   @override
@@ -29,13 +30,13 @@ class _PopularTvPageState extends State<PopularTvPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8),
-        child: BlocBuilder<TvPopularBloc, TvPopularState>(
+        child: BlocBuilder<TelevisionPopularBloc, TelevisionPopularState>(
             builder: (context, state) {
-          if (state is TvPopularLoading) {
+          if (state is TelevisionPopularLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is TvPopularHasData) {
+          } else if (state is TelevisionPopularHasData) {
             final popular = state.result;
             return ListView.builder(
               itemCount: state.result.length,
@@ -47,7 +48,7 @@ class _PopularTvPageState extends State<PopularTvPage> {
           } else {
             return Center(
               key: const Key("error_message"),
-              child: Text((state as TvPopularError).message),
+              child: Text((state as TelevisionPopularError).message),
             );
           }
         }),

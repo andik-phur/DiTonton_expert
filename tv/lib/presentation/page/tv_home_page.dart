@@ -1,10 +1,10 @@
 // ignore_for_file: depend_on_referenced_packages, library_private_types_in_public_api
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:core/domain/entities/tv.dart';
 import 'package:core/presentation/widgets/tab_pager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tv/domain/entities/tv.dart';
 import 'package:tv/presentation/bloc/tv_now_playing/tv_now_playing_bloc.dart';
 import 'package:tv/presentation/bloc/tv_popular/tv_popular_bloc.dart';
 import 'package:tv/presentation/bloc/tv_top_rated/tv_top_rated_bloc.dart';
@@ -31,9 +31,9 @@ class _TvPageState extends State<TvPage> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      context.read<TvOnTheAirBloc>().add(OnTvOnTheAir());
-      context.read<TvPopularBloc>().add(OnTvPopular());
-      context.read<TvTopRatedBloc>().add(OnTvTopRated());
+      context.read<TelevisionOnTheAirBloc>().add(OnTelevisionOnTheAir());
+      context.read<TelevisionPopularBloc>().add(OnTelevisionPopular());
+      context.read<TelevisionTopRatedBloc>().add(OnTelevisionTopRated());
     });
   }
 
@@ -96,13 +96,13 @@ class _TvPageState extends State<TvPage> {
                 'Tv Now Playing',
                 style: kHeading6,
               ),
-              BlocBuilder<TvOnTheAirBloc, TvOnTheAirState>(
+              BlocBuilder<TelevisionOnTheAirBloc, TelevisionOnTheAirState>(
                   builder: (context, state) {
-                if (state is TvOnTheAirLoading) {
+                if (state is TelevisionOnTheAirLoading) {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state is TvOnTheAirHasData) {
+                } else if (state is TelevisionOnTheAirHasData) {
                   return TvList(state.result);
                 } else {
                   return const Text("Failed");
@@ -113,13 +113,13 @@ class _TvPageState extends State<TvPage> {
                   onTap: () {
                     Navigator.pushNamed(context, PopularTvPage.routeName);
                   }),
-              BlocBuilder<TvPopularBloc, TvPopularState>(
+              BlocBuilder<TelevisionPopularBloc, TelevisionPopularState>(
                   builder: (context, state) {
-                if (state is TvPopularLoading) {
+                if (state is TelevisionPopularLoading) {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state is TvPopularHasData) {
+                } else if (state is TelevisionPopularHasData) {
                   return TvList(state.result);
                 } else {
                   return const Text("Failed");
@@ -130,13 +130,13 @@ class _TvPageState extends State<TvPage> {
                   onTap: () {
                     Navigator.pushNamed(context, TvTopRatedPage.routeName);
                   }),
-              BlocBuilder<TvTopRatedBloc, TvTopRatedState>(
+              BlocBuilder<TelevisionTopRatedBloc, TelevisionTopRatedState>(
                   builder: (context, state) {
-                if (state is TvTopRatedLoading) {
+                if (state is TelevisionTopRatedLoading) {
                   return const Center(
                     child: CircularProgressIndicator(),
                   );
-                } else if (state is TvTopRatedHasData) {
+                } else if (state is TelevisionTopRatedHasData) {
                   return TvList(state.result);
                 } else {
                   return const Text("Failed");

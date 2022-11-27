@@ -5,66 +5,66 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:movie/presentation/bloc/now_playing/now_playing_movies_bloc.dart';
 
-import '../../dummy_data/dummy_objects.dart';
+import '../../movie_test/dummy_data/dummy_objects.dart';
 import '../../helper/test_helper.mocks.dart';
 
 void main() {
   late MockGetNowPlayingMovies mockGetNowPlayingMovies;
-  late MovieNowPlayingBloc movieNowPlayingBloc;
+  late MoviesNowPlayingBloc movieNowPlayingBloc;
 
   setUp(() {
     mockGetNowPlayingMovies = MockGetNowPlayingMovies();
-    movieNowPlayingBloc = MovieNowPlayingBloc(mockGetNowPlayingMovies);
+    movieNowPlayingBloc = MoviesNowPlayingBloc(mockGetNowPlayingMovies);
   });
 
   test('the initial state should be empty', () {
-    expect(movieNowPlayingBloc.state, MovieNowPlayingEmpty());
+    expect(movieNowPlayingBloc.state, MoviesNowPlayingEmpty());
   });
 
-  blocTest<MovieNowPlayingBloc, MovieNowPlayingState>(
+  blocTest<MoviesNowPlayingBloc, MoviesNowPlayingState>(
     'should emit Loading state and then HasData state when data successfully fetched',
     build: () {
       when(mockGetNowPlayingMovies.execute())
           .thenAnswer((_) async => Right(testMovieList));
       return movieNowPlayingBloc;
     },
-    act: (bloc) => bloc.add(OnMovieNowPLayingCalled()),
+    act: (bloc) => bloc.add(OnMoviesNowPLayingCalled()),
     expect: () => [
-      MovieNowPlayingLoading(),
-      MovieNowPlayingHasData(testMovieList),
+      MoviesNowPlayingLoading(),
+      MoviesNowPlayingHasData(testMovieList),
     ],
     verify: (bloc) {
       verify(mockGetNowPlayingMovies.execute());
-      return OnMovieNowPLayingCalled().props;
+      return OnMoviesNowPLayingCalled().props;
     },
   );
 
-  blocTest<MovieNowPlayingBloc, MovieNowPlayingState>(
+  blocTest<MoviesNowPlayingBloc, MoviesNowPlayingState>(
     'should emit Loading state and then Error state when data failed to fetch',
     build: () {
       when(mockGetNowPlayingMovies.execute())
           .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return movieNowPlayingBloc;
     },
-    act: (bloc) => bloc.add(OnMovieNowPLayingCalled()),
+    act: (bloc) => bloc.add(OnMoviesNowPLayingCalled()),
     expect: () => [
-      MovieNowPlayingLoading(),
-      const MovieNowPlayingError('Server Failure'),
+      MoviesNowPlayingLoading(),
+      const MoviesNowPlayingError('Server Failure'),
     ],
-    verify: (bloc) => MovieNowPlayingLoading(),
+    verify: (bloc) => MoviesNowPlayingLoading(),
   );
 
-  blocTest<MovieNowPlayingBloc, MovieNowPlayingState>(
+  blocTest<MoviesNowPlayingBloc, MoviesNowPlayingState>(
     'should emit Loading state and then Empty state when the retrieved data is empty',
     build: () {
       when(mockGetNowPlayingMovies.execute())
           .thenAnswer((_) async => const Right([]));
       return movieNowPlayingBloc;
     },
-    act: (bloc) => bloc.add(OnMovieNowPLayingCalled()),
+    act: (bloc) => bloc.add(OnMoviesNowPLayingCalled()),
     expect: () => [
-      MovieNowPlayingLoading(),
-      MovieNowPlayingEmpty(),
+      MoviesNowPlayingLoading(),
+      MoviesNowPlayingEmpty(),
     ],
   );
 }

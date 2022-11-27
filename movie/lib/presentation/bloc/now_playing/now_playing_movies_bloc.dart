@@ -12,28 +12,28 @@ part 'now_playing_movies_event.dart';
 
 part 'now_playing_movies_state.dart';
 
-class MovieNowPlayingBloc
-    extends Bloc<MovieNowPlayingEvent, MovieNowPlayingState> {
+class MoviesNowPlayingBloc
+    extends Bloc<MoviesNowPlayingEvent, MoviesNowPlayingState> {
   final GetNowPlayingMovies _getNowPlayingMovies;
 
-  MovieNowPlayingBloc(
+  MoviesNowPlayingBloc(
     this._getNowPlayingMovies,
-  ) : super(MovieNowPlayingEmpty()) {
-    on<OnMovieNowPLayingCalled>(_onMovieNowPlayingCalled);
+  ) : super(MoviesNowPlayingEmpty()) {
+    on<OnMoviesNowPLayingCalled>(_onMovieNowPlayingCalled);
   }
 
-  FutureOr<void> _onMovieNowPlayingCalled(
-      OnMovieNowPLayingCalled event, Emitter<MovieNowPlayingState> emit) async {
-    emit(MovieNowPlayingLoading());
+  FutureOr<void> _onMovieNowPlayingCalled(OnMoviesNowPLayingCalled event,
+      Emitter<MoviesNowPlayingState> emit) async {
+    emit(MoviesNowPlayingLoading());
 
     final result = await _getNowPlayingMovies.execute();
 
     result.fold((failure) {
-      emit(MovieNowPlayingError(failure.message));
+      emit(MoviesNowPlayingError(failure.message));
     }, (success) {
       success.isEmpty
-          ? emit(MovieNowPlayingEmpty())
-          : emit(MovieNowPlayingHasData(success));
+          ? emit(MoviesNowPlayingEmpty())
+          : emit(MoviesNowPlayingHasData(success));
     });
   }
 }

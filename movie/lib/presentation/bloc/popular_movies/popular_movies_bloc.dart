@@ -11,23 +11,23 @@ part 'popular_movies_state.dart';
 
 part 'popular_movies_event.dart';
 
-class MoviePopularBloc extends Bloc<MoviePopularEvent, MoviePopularState> {
+class MoviesPopularBloc extends Bloc<MoviesPopularEvent, MoviesPopularState> {
   final GetPopularMovies _getPopularMovies;
 
-  MoviePopularBloc(this._getPopularMovies) : super(MoviePopularEmpty()) {
-    on<OnMoviePopular>(_onMoviePopular);
+  MoviesPopularBloc(this._getPopularMovies) : super(MoviesPopularEmpty()) {
+    on<OnMoviesPopular>(_onMoviePopular);
   }
 
   FutureOr<void> _onMoviePopular(
-      OnMoviePopular event, Emitter<MoviePopularState> emit) async {
+      OnMoviesPopular event, Emitter<MoviesPopularState> emit) async {
     final result = await _getPopularMovies.execute();
 
     result.fold((failure) {
-      emit(MoviePopularError(failure.message));
+      emit(MoviesPopularError(failure.message));
     }, (success) {
       success.isEmpty
-          ? emit(MoviePopularEmpty())
-          : emit(MoviePopularHasData(success));
+          ? emit(MoviesPopularEmpty())
+          : emit(MoviesPopularHasData(success));
     });
   }
 }

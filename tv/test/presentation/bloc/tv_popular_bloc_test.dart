@@ -5,65 +5,65 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tv/presentation/bloc/tv_popular/tv_popular_bloc.dart';
 
-import '../../dummy_data/dummy_object.dart';
+import '../../tv_test/dummy_data/dummy_object.dart';
 import '../../helpers/test_helper.mocks.dart';
 
 void main() {
   late MockGetPopularTv mockGetTvPopular;
-  late TvPopularBloc tvPopularBloc;
+  late TelevisionPopularBloc tvPopularBloc;
 
   setUp(() {
     mockGetTvPopular = MockGetPopularTv();
-    tvPopularBloc = TvPopularBloc(mockGetTvPopular);
+    tvPopularBloc = TelevisionPopularBloc(mockGetTvPopular);
   });
 
   test('the initial state should be empty', () {
-    expect(tvPopularBloc.state, TvPopularEmpty());
+    expect(tvPopularBloc.state, TelevisionPopularEmpty());
   });
 
-  blocTest<TvPopularBloc, TvPopularState>(
+  blocTest<TelevisionPopularBloc, TelevisionPopularState>(
     'should emit Loading state and then HasData state when data successfully fetched',
     build: () {
       when(mockGetTvPopular.execute())
           .thenAnswer((_) async => Right(testTVShowList));
       return tvPopularBloc;
     },
-    act: (bloc) => bloc.add(OnTvPopular()),
+    act: (bloc) => bloc.add(OnTelevisionPopular()),
     expect: () => [
-      TvPopularLoading(),
-      TvPopularHasData(testTVShowList),
+      TelevisionPopularLoading(),
+      TelevisionPopularHasData(testTVShowList),
     ],
     verify: (bloc) {
       verify(mockGetTvPopular.execute());
-      return OnTvPopular().props;
+      return OnTelevisionPopular().props;
     },
   );
 
-  blocTest<TvPopularBloc, TvPopularState>(
+  blocTest<TelevisionPopularBloc, TelevisionPopularState>(
     'should emit Loading state and then Error state when data failed to fetch',
     build: () {
       when(mockGetTvPopular.execute())
           .thenAnswer((_) async => const Left(ServerFailure('Server Failure')));
       return tvPopularBloc;
     },
-    act: (bloc) => bloc.add(OnTvPopular()),
+    act: (bloc) => bloc.add(OnTelevisionPopular()),
     expect: () => [
-      TvPopularLoading(),
-      TvPopularError('Server Failure'),
+      TelevisionPopularLoading(),
+      TelevisionPopularError('Server Failure'),
     ],
-    verify: (bloc) => TvPopularLoading(),
+    verify: (bloc) => TelevisionPopularLoading(),
   );
 
-  blocTest<TvPopularBloc, TvPopularState>(
+  blocTest<TelevisionPopularBloc, TelevisionPopularState>(
     'should emit Loading state and then Empty state when the retrieved data is empty',
     build: () {
       when(mockGetTvPopular.execute()).thenAnswer((_) async => const Right([]));
       return tvPopularBloc;
     },
-    act: (bloc) => bloc.add(OnTvPopular()),
+    act: (bloc) => bloc.add(OnTelevisionPopular()),
     expect: () => [
-      TvPopularLoading(),
-      TvPopularEmpty(),
+      TelevisionPopularLoading(),
+      TelevisionPopularEmpty(),
     ],
   );
 }

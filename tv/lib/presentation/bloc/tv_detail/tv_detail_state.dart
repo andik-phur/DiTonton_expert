@@ -1,30 +1,30 @@
 part of 'tv_detail_bloc.dart';
 
-abstract class TvDetailState extends Equatable {}
+abstract class DetailTvState extends Equatable {}
 
-class TvDetailEmpty extends TvDetailState {
+class TelevisionDetailEmpty extends DetailTvState {
   @override
   List<Object?> get props => [];
 }
 
-class TvDetailLoading extends TvDetailState {
+class TelevisionDetailLoading extends DetailTvState {
   @override
   List<Object?> get props => [];
 }
 
-class TvDetailError extends TvDetailState {
+class TelevisionDetailError extends DetailTvState {
   final String message;
 
-  TvDetailError(this.message);
+  TelevisionDetailError(this.message);
 
   @override
   List<Object?> get props => [message];
 }
 
-class TvDetailHasData extends TvDetailState {
+class DetailTvHasData extends DetailTvState {
   final TvDetail result;
 
-  TvDetailHasData(this.result);
+  DetailTvHasData(this.result);
 
   @override
   List<Object?> get props => [result];

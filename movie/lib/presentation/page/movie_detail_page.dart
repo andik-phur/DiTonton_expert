@@ -29,31 +29,31 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      context.read<MovieDetailBloc>().add(OnMovieDetail(widget.id));
+      context.read<MoviesDetailBloc>().add(OnMoviesDetail(widget.id));
       context
-          .read<MovieRecommendationBloc>()
-          .add(OnMovieRecommendation(widget.id));
-      context.read<MovieWatchListBloc>().add(MovieWatchListStatus(widget.id));
+          .read<MoviesRecommendationBloc>()
+          .add(OnMoviesRecommendation(widget.id));
+      context.read<MoviesWatchListBloc>().add(MoviesWatchListStatus(widget.id));
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final isMovieAddedToWatchList =
-        context.select<MovieWatchListBloc, bool>((bloc) {
-      if (bloc.state is MovieWatchListIsAdded) {
-        return (bloc.state as MovieWatchListIsAdded).isAdded;
+        context.select<MoviesWatchListBloc, bool>((bloc) {
+      if (bloc.state is MoviesWatchListIsAdded) {
+        return (bloc.state as MoviesWatchListIsAdded).isAdded;
       }
       return false;
     });
     return SafeArea(
-      child: Scaffold(body: BlocBuilder<MovieDetailBloc, MovieDetailState>(
+      child: Scaffold(body: BlocBuilder<MoviesDetailBloc, MoviesDetailState>(
         builder: (context, state) {
-          if (state is MovieDetailLoading) {
+          if (state is MoviesDetailLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is MovieDetailHasData) {
+          } else if (state is MoviesDetailHasData) {
             final movie = state.result;
             return ContentDetails(
                 movie: movie, isAddedWatchlist: isMovieAddedToWatchList);
@@ -96,17 +96,17 @@ class _ContentDetailsState extends State<ContentDetails> {
             onPressed: () async {
               if (!widget.isAddedWatchlist) {
                 context
-                    .read<MovieWatchListBloc>()
-                    .add(MovieWatchListAdd(widget.movie));
+                    .read<MoviesWatchListBloc>()
+                    .add(MoviesWatchListAdd(widget.movie));
               } else {
                 context
-                    .read<MovieWatchListBloc>()
-                    .add(MovieWatchListRemove(widget.movie));
+                    .read<MoviesWatchListBloc>()
+                    .add(MoviesWatchListRemove(widget.movie));
               }
-              final state = BlocProvider.of<MovieWatchListBloc>(context).state;
+              final state = BlocProvider.of<MoviesWatchListBloc>(context).state;
               String message = "";
 
-              if (state is MovieWatchListIsAdded) {
+              if (state is MoviesWatchListIsAdded) {
                 final isAdded = state.isAdded;
                 message = isAdded == false ? notifAdd : notifRemove;
               } else {
@@ -174,13 +174,13 @@ class _ContentDetailsState extends State<ContentDetails> {
           'Recommendations',
           style: kHeading6,
         ),
-        BlocBuilder<MovieRecommendationBloc, MovieRecommendationState>(
+        BlocBuilder<MoviesRecommendationBloc, MoviesRecommendationState>(
             builder: (context, state) {
-          if (state is MovieRecommendationLoading) {
+          if (state is MoviesRecommendationLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is MovieRecommendationHasData) {
+          } else if (state is MoviesRecommendationHasData) {
             final movieRecommendation = state.result;
             return Container(
               margin: const EdgeInsets.only(top: 8),
@@ -220,7 +220,7 @@ class _ContentDetailsState extends State<ContentDetails> {
                 itemCount: movieRecommendation.length,
               ),
             );
-          } else if (state is MovieRecommendationEmpty) {
+          } else if (state is MoviesRecommendationEmpty) {
             return const Text("-");
           } else {
             return const Text("Failed");

@@ -6,11 +6,10 @@ import 'package:core/styles/text_styles.dart';
 import 'package:core/presentation/widgets/scrolable_sheet.dart';
 import 'package:core/styles/colors.dart';
 import 'package:core/domain/entities/genre.dart';
-
-import 'package:core/domain/entities/tv_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:tv/domain/entities/tv_detail.dart';
 import 'package:tv/presentation/bloc/tv_detail/tv_detail_bloc.dart';
 import 'package:tv/presentation/bloc/tv_recommendation/tv_recommendation_bloc.dart';
 import 'package:tv/presentation/bloc/tv_watchlist/tv_watchlist_bloc.dart';
@@ -30,28 +29,33 @@ class _TvDetailPageState extends State<TvDetailPage> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      context.read<TvDetailBloc>().add(OnTvDetail(widget.id));
-      context.read<TvRecommendationBloc>().add(OnTvRecommendation(widget.id));
-      context.read<TvWatchListBloc>().add(TvWatchListStatus(widget.id));
+      context.read<DetailTvBloc>().add(OnTelevisionDetail(widget.id));
+      context
+          .read<TvRecommendationBloc>()
+          .add(OnTelevisionRecommendation(widget.id));
+      context
+          .read<TelevisionWatchListBloc>()
+          .add(TelevisionWatchListStatus(widget.id));
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final isTvShowAddedToWatchlist = context.select<TvWatchListBloc, bool>(
-        (bloc) => (bloc.state is TvWatchListIsAdded)
-            ? (bloc.state as TvWatchListIsAdded).isAdded
-            : false);
+    final isTvShowAddedToWatchlist =
+        context.select<TelevisionWatchListBloc, bool>((bloc) =>
+            (bloc.state is TelevisionWatchListIsAdded)
+                ? (bloc.state as TelevisionWatchListIsAdded).isAdded
+                : false);
 
     return SafeArea(
       child: Scaffold(
-        body: BlocBuilder<TvDetailBloc, TvDetailState>(
+        body: BlocBuilder<DetailTvBloc, DetailTvState>(
           builder: (context, state) {
-            if (state is TvDetailLoading) {
+            if (state is TelevisionDetailLoading) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (state is TvDetailHasData) {
+            } else if (state is DetailTvHasData) {
               final tv = state.result;
               return ContentDetails(
                   tvDetail: tv, isAddedWatchlistTv: isTvShowAddedToWatchlist);
@@ -92,18 +96,19 @@ class _ContentDetailsState extends State<ContentDetails> {
             onPressed: () async {
               if (!widget.isAddedWatchlistTv) {
                 context
-                    .read<TvWatchListBloc>()
-                    .add(TvWatchListAdd(widget.tvDetail));
+                    .read<TelevisionWatchListBloc>()
+                    .add(TelevisionWatchListAdd(widget.tvDetail));
               } else {
                 context
-                    .read<TvWatchListBloc>()
-                    .add(TvWatchListRemove(widget.tvDetail));
+                    .read<TelevisionWatchListBloc>()
+                    .add(TelevisionWatchListRemove(widget.tvDetail));
               }
 
-              final state = BlocProvider.of<TvWatchListBloc>(context).state;
+              final state =
+                  BlocProvider.of<TelevisionWatchListBloc>(context).state;
               String message = "";
 
-              if (state is TvWatchListIsAdded) {
+              if (state is TelevisionWatchListIsAdded) {
                 final isAdded = state.isAdded;
                 message = isAdded == false ? notifAdd : notifRemove;
               } else {
@@ -171,13 +176,13 @@ class _ContentDetailsState extends State<ContentDetails> {
             "Recommendation",
             style: kHeading6,
           ),
-          BlocBuilder<TvRecommendationBloc, TvRecommendationState>(
+          BlocBuilder<TvRecommendationBloc, TelevisionRecommendationState>(
             builder: (context, state) {
-              if (state is TvRecommendationLoading) {
+              if (state is TelevisionRecommendationLoading) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
-              } else if (state is TvRecommendationHasData) {
+              } else if (state is TelevisionRecommendationHasData) {
                 final tvShowRecommendations = state.result;
 
                 return Container(

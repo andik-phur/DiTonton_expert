@@ -20,8 +20,8 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
   @override
   void initState() {
     super.initState();
-    Future.microtask(
-        () => context.read<MovieWatchListBloc>().add(OnFetchMovieWatchList()));
+    Future.microtask(() =>
+        context.read<MoviesWatchListBloc>().add(OnFetchMoviesWatchList()));
   }
 
   @override
@@ -32,8 +32,8 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
 
   @override
   void didPopNext() {
-    Future.microtask(
-        () => context.read<MovieWatchListBloc>().add(OnFetchMovieWatchList()));
+    Future.microtask(() =>
+        context.read<MoviesWatchListBloc>().add(OnFetchMoviesWatchList()));
   }
 
   @override
@@ -46,13 +46,13 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8),
-      child: BlocBuilder<MovieWatchListBloc, MovieWatchListState>(
+      child: BlocBuilder<MoviesWatchListBloc, MoviesWatchListState>(
           builder: (context, state) {
-        if (state is MovieWatchListLoading) {
+        if (state is MoviesWatchListLoading) {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        } else if (state is MovieWatchListHasData) {
+        } else if (state is MoviesWatchListHasData) {
           final data = state.result;
           return ListView.builder(
             itemCount: data.length,
@@ -61,7 +61,7 @@ class _WatchlistPageState extends State<WatchlistPage> with RouteAware {
               return MovieCard(movie);
             },
           );
-        } else if (state is MovieWatchListEmpty) {
+        } else if (state is MoviesWatchListEmpty) {
           return const Center(
             child: Text("Watchlist Empty"),
           );

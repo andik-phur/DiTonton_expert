@@ -9,10 +9,10 @@ import 'package:movie/data/model/movie_detail_model.dart';
 import 'package:movie/data/model/movie_model.dart';
 import 'package:movie/data/repositories/movie_repository_impl.dart';
 import 'package:movie/domain/entities/movie.dart';
-import '../../dummy_data/dummy_objects.dart';
+import '../../movie_test/dummy_data/dummy_objects.dart';
 import '../../helper/test_helper.mocks.dart';
 import 'package:core/utils/failure.dart';
-import 'package:core/data/models/genre_model.dart';
+import 'package:core/data/model/genre_model.dart';
 
 void main() {
   late MovieRepositoryImpl repository;
