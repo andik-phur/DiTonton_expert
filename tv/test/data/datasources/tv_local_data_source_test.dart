@@ -5,7 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:core/utils/exception.dart';
 import 'package:tv/datasources/tv_datasource/tv_local_data_source.dart';
 
-import '../../dummy_data/dummy_object.dart';
+import '../../tv_test/dummy_data/dummy_object.dart';
 import '../../helpers/test_helper.mocks.dart';
 
 void main() {

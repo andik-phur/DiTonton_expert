@@ -8,7 +8,7 @@ import 'package:tv/data/model/tv_model/tv_detail_model.dart';
 import 'package:tv/data/model/tv_model/tv_model.dart';
 import 'package:tv/domain/entities/tv.dart';
 import 'package:tv/repositories/tv_repositories_impl.dart';
-import '../../dummy_data/dummy_object.dart';
+import '../../tv_test/dummy_data/dummy_object.dart';
 import '../../helpers/test_helper.mocks.dart';
 import 'package:core/utils/failure.dart';
 import 'package:core/utils/exception.dart';
