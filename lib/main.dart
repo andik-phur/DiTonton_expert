@@ -32,11 +32,20 @@ import 'package:movie/presentation/page/popular_movies_page.dart';
 import 'package:movie/presentation/page/top_rated_movies_page.dart';
 import 'package:movie/presentation/page/watchlist_movies_page.dart';
 import 'package:core/presentation/widgets/tab_pager.dart';
+import 'package:core/utils/ssl_pinning.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:movie/presentation/page/Now_playing_page.dart';
+import 'package:tv/presentation/page/tv_now_playing_page.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   di.init();
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await SslPinning.init();
+
+  await Firebase.initializeApp();
+  await FirebaseAnalytics.instance.logAppOpen();
+
   runApp(MyApp());
 }
 
@@ -128,6 +137,10 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => SearchTvPage());
             case WatchlistTvPage.routeName:
               return MaterialPageRoute(builder: (_) => WatchlistTvPage());
+            case NowPlayingPage.routeName:
+              return MaterialPageRoute(builder: (_) => NowPlayingPage());
+            case TvNowPlayingPage.routeName:
+              return MaterialPageRoute(builder: (_) => TvNowPlayingPage());
             case TvPage.routeName:
               return MaterialPageRoute(builder: (_) => TvPage());
             case TabPager.routeName:

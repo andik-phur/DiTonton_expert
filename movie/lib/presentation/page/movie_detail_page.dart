@@ -195,7 +195,7 @@ class _ContentDetailsState extends State<ContentDetails> {
                       onTap: () {
                         Navigator.pushReplacementNamed(
                             context, MovieDetailPage.routeName,
-                            arguments: recommendation);
+                            arguments: recommendation.id);
                       },
                       child: ClipRRect(
                         borderRadius:

@@ -6,7 +6,6 @@ import 'package:tv/presentation/bloc/tv_top_rated/tv_top_rated_bloc.dart';
 import 'package:tv/presentation/bloc/tv_watchlist/tv_watchlist_bloc.dart';
 import 'package:search/search.dart';
 import 'package:search/presentation/bloc/movie_bloc_search/search_movie_bloc.dart';
-import 'package:core/utils/ssl_pinning.dart';
 import 'package:tv/presentation/bloc/tv_now_playing/tv_now_playing_bloc.dart';
 import 'package:movie/presentation/bloc/movie_detail/movie_detail_bloc.dart';
 import 'package:movie/presentation/bloc/now_playing/now_playing_movies_bloc.dart';
@@ -29,6 +28,7 @@ import 'package:movie/data/datasource/db/database_helper.dart';
 import 'package:movie/data/repositories/movie_repository_impl.dart';
 import 'package:movie/domain/repositories/movie_repository.dart';
 import 'package:tv/tv.dart';
+import 'package:core/utils/ssl_pinning.dart';
 
 final locator = GetIt.instance;
 

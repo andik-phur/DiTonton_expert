@@ -9,6 +9,7 @@ import 'package:tv/presentation/bloc/tv_now_playing/tv_now_playing_bloc.dart';
 import 'package:tv/presentation/bloc/tv_popular/tv_popular_bloc.dart';
 import 'package:tv/presentation/bloc/tv_top_rated/tv_top_rated_bloc.dart';
 import 'package:tv/presentation/page/tv_detail_page.dart';
+import 'package:tv/presentation/page/tv_now_playing_page.dart';
 import 'package:tv/presentation/page/tv_top_rated.dart';
 import 'package:tv/presentation/page/tv_popular_page.dart';
 import 'package:search/presentation/pages/tv_search_page.dart';
@@ -92,10 +93,11 @@ class _TvPageState extends State<TvPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Tv Now Playing',
-                style: kHeading6,
-              ),
+              _buildSubHeading(
+                  title: 'Tv Now Playing',
+                  onTap: () {
+                    Navigator.pushNamed(context, TvNowPlayingPage.routeName);
+                  }),
               BlocBuilder<TelevisionOnTheAirBloc, TelevisionOnTheAirState>(
                   builder: (context, state) {
                 if (state is TelevisionOnTheAirLoading) {
