@@ -164,7 +164,10 @@ class _TvPageState extends State<TvPage> {
           child: Padding(
             padding: const EdgeInsets.all(8),
             child: Row(
-              children: const [Text('See more'), Icon(Icons.arrow_forward_ios)],
+              children: const [
+                Text('See more !'),
+                Icon(Icons.arrow_forward_ios)
+              ],
             ),
           ),
         )
