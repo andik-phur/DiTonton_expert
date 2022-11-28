@@ -1,7 +1,7 @@
 [![Codemagic build status](https://api.codemagic.io/apps/6383019066cae6daa67945e2/release-workflow/status_badge.svg)]
 (https://codemagic.io/apps/6383019066cae6daa67945e2/release-workflow/latest_build)
 
-[![Codemagic build status](https://api.codemagic.io/apps/6383019066cae6daa67945e2/release-workflow/status_badge.svg)](https://codemagic.io/apps/6383019066cae6daa67945e2/<workflow-id>/latest_build)
+[![Codemagic build status](https://api.codemagic.io/apps/6383019066cae6daa67945e2/63803b5b543f9f727959ff61/status_badge.svg)](https://codemagic.io/apps/6383019066cae6daa67945e2/<workflow-id>/latest_build)
 
 
 [![Codemagic build status](https://api.codemagic.io/apps/6383019066cae6daa67945e2/6383019066cae6daa67945e1/status_badge.svg)](https://codemagic.io/apps/6383019066cae6daa67945e2/6383019066cae6daa67945e1/latest_build)
