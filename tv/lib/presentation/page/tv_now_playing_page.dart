@@ -4,7 +4,6 @@ import 'package:core/presentation/widgets/tv_card_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tv/presentation/bloc/tv_now_playing/tv_now_playing_bloc.dart';
-import 'package:tv/presentation/bloc/tv_popular/tv_popular_bloc.dart';
 
 class TvNowPlayingPage extends StatefulWidget {
   static const routeName = '/Now_playing_tv_page';
