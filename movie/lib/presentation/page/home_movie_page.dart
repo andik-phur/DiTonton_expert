@@ -17,6 +17,7 @@ import 'package:tv/presentation/page/tv_home_page.dart';
 import 'package:about/about_page.dart';
 import 'package:core/presentation/widgets/tab_pager.dart';
 import 'package:core/utils/constants.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = '/movie_home';
@@ -43,6 +44,47 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Container(
+        color: Colors.black,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+          child: GNav(
+            backgroundColor: Colors.black,
+            color: Colors.white,
+            activeColor: Colors.white,
+            gap: 10,
+            padding: const EdgeInsets.all(16),
+            tabs: [
+              GButton(
+                icon: Icons.movie,
+                onPressed: () => {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomePage())),
+                },
+              ),
+              GButton(
+                icon: Icons.tv,
+                onPressed: () => {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const TvPage())),
+                },
+              ),
+              GButton(
+                icon: Icons.help,
+                onPressed: () => {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AboutPage())),
+                },
+                text: 'About',
+              ),
+            ],
+          ),
+        ),
+      ),
       drawer: Drawer(
         child: Column(
           children: [
