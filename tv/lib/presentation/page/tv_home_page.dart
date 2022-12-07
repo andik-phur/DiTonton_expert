@@ -54,19 +54,19 @@ class _TvPageState extends State<TvPage> {
             padding: const EdgeInsets.all(16),
             tabs: [
               GButton(
-                icon: Icons.tv,
-                onPressed: () => {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const TvPage())),
-                },
-              ),
-              GButton(
                 icon: Icons.movie,
                 onPressed: () => {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => const HomePage())),
+                },
+              ),
+              GButton(
+                icon: Icons.tv,
+                onPressed: () => {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const TvPage())),
                 },
               ),
               GButton(
